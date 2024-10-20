@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Titles and Music Videos</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        // JavaScript function to toggle visibility of videos
+        function showVideos() {
+            var videoSection = document.getElementById("videoSection");
+            videoSection.style.display = "block";  // Show the video section when button is clicked
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Songs by Mood (Amusement)</h1>
+
+        <!-- Button to show videos -->
+        <button onclick="showVideos()">Show Songs I'm in the mood for</button>
+
+        <!-- Section to display videos, initially hidden -->
+        <div id="videoSection" style="display: none; margin-top: 20px;">
+            <h2>Music Videos:</h2>
+            <div class="videos">
+                {% if videos %}
+                    {% for video in videos %}
+                        <div class="video">
+                            <h3>{{ video.title }}</h3>
+                            <iframe width="560" height="315" src="{{ video.video_url }}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
